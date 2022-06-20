@@ -1,23 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import AddNote from "./components/AddNote";
+import NoteCard from "./components/NoteCard";
+import { api_uri } from "./variables";
 
 function App() {
+  const [data, setData] = useState("");
+  useEffect(() => {
+    fetchData();
+  }, []);
+  const fetchData = () => {
+    fetch(`${api_uri}`)
+      .then((res) => res.json())
+      .then((note) => setData(note))
+      .catch((err) => console.log(err));
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="flex flex-wrap justify-center">
+      <AddNote />
+      {data &&
+        data
+          .slice(0)
+          .reverse()
+          .map((item) => (
+            <NoteCard
+              key={item._id}
+              id={item._id}
+              title={item.title}
+              description={item.description}
+              func={fetchData}
+            />
+          ))}
     </div>
   );
 }
