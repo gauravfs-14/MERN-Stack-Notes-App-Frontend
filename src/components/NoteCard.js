@@ -11,14 +11,14 @@ function NoteCard(props) {
       });
   };
   return (
-    <div className="w-[400px] h-[500px] bg-slate-900 text-yellow-50 p-4 m-4 rounded-lg text-center flex flex-col overflow-y-auto justify-around">
+    <div className="w-[400px] h-[500px] bg-slate-900 text-yellow-50 p-4 m-4 rounded-lg text-center flex flex-col justify-around break-all">
       <div className="flex-grow">
-        <h4 className="text-3xl font-bold mb-3 border-b-2 border-yellow-50">
+        <h4 className="text-3xl font-bold mb-3 border-b-2 border-yellow-50 ">
           {props.title}
         </h4>
         <p>{props.description}</p>
       </div>
-      <div className="self-end items-end flex gap-4">
+      <div className="items-end flex gap-4">
         <Link
           to={"/update"}
           state={{

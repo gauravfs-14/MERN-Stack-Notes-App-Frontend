@@ -20,7 +20,10 @@ function NoteForm() {
       }),
     })
       .then((res) => res.json())
-      .then(navigate("/"));
+      .then(() => {
+        alert("Created the Note");
+        navigate("/");
+      });
   };
   return (
     <form

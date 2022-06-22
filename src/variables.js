@@ -1,3 +1,3 @@
-const api_uri = "http://localhost:8000/api/notes";
+const api_uri = "http://localhost:5000/api/notes";
 
 module.exports = { api_uri };
